@@ -1,0 +1,36 @@
+theme = "base16_transparent"
+
+[editor]
+line-number = "relative"
+cursorline = true
+auto-format = true
+completion-trigger-len = 1
+bufferline = "multiple"
+color-modes = true
+true-color = true
+popup-border = "all"
+
+[editor.statusline]
+left = ["mode", "file-name", "file-modification-indicator", "spinner"]
+center = ["position", "position-percentage"]
+right = [
+  "version-control",
+  "diagnostics",
+  "selections",
+  "register",
+  "file-encoding",
+]
+mode.normal = "normal"
+mode.insert = "insert"
+mode.select = "select"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.indent-guides]
+render = true
+
+[keys.insert]
+j = { k = "normal_mode" }

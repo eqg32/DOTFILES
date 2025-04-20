@@ -1,0 +1,9 @@
+[[language]]
+name = "python"
+formatter = { command = "black", args = ["-l", "80", "-q", "-"] }
+auto-format = true
+
+[[language]]
+name = "go"
+formatter = { command = "goimports" }
+auto-format = true

@@ -1,0 +1,32 @@
+[theme]
+theme = "native"
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "sound"
+driver = "pulseaudio"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+
+[[block]]
+block = "temperature"
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "net"
+
+[[block]]
+block = "keyboard_layout"
+driver = "sway"
+
+[[block]]
+block = "time"
+
+[[block]]
+block = "battery"
