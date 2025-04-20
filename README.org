@@ -1,0 +1,3 @@
+* Introduction
+
+Just my configuration files for sway, text editors and a terminal. Comfortable for me. Perhaps, here will be something more.
