@@ -70,6 +70,8 @@
   (python-shell-interpreter-args "-q"))
 
 (use-package org
+  :custom
+  (org-agenda-files (directory-files-recursively "~/ORG/" "\\.org$"))
   :config
   (add-hook 'org-mode-hook (lambda () (org-indent-mode))))
 
