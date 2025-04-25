@@ -11,8 +11,8 @@ include ~/.cache/wal/colors-sway
 
 bar {
     # Position & Appearance
-    position           bottom
-    height            32
+    position            top
+    height              32
     workspace_min_width 32
     separator_symbol  "|"
     font              Iosevka Nerd Font Medium 14
@@ -82,6 +82,7 @@ output * bg $wallpaper fill
 exec          brightnessctl s 20%
 exec_always   autotiling-rs
 exec_always   pulseaudio
+exec_always   emacs --daemon
 exec          sleep 1 && swaymsg reload
 
 
@@ -121,7 +122,7 @@ set $menu    bemenu-run \
 bindsym {
     $mod+Return       exec $term
     $mod+b            exec $browser
-    $mod+e            exec emacs
+    $mod+e            exec emacsclient -r -c
     $mod+Shift+d      kill
     $mod+r            exec $menu
 }
