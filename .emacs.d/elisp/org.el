@@ -5,6 +5,6 @@
   (company-mode -1)
   (set-face-attribute 'org-code nil
 		      :font "Iosevka Nerd Font"
-		      :inherit 'fixed-pitch))
+		      :inherit 'default))
 
 (add-hook 'org-mode-hook 'setup-org)
