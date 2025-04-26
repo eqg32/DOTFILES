@@ -120,9 +120,9 @@ set $menu    bemenu-run \
 
 # Application Shortcuts
 bindsym {
-    $mod+Return       exec $term
+    $mod+Shift+Return exec $term
     $mod+b            exec $browser
-    $mod+e            exec emacsclient -r -c
+    $mod+Return       exec emacsclient -r -c
     $mod+Shift+d      kill
     $mod+r            exec $menu
 }
