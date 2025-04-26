@@ -9,6 +9,7 @@
   (scroll-margin 4)
   (inhibit-startup-screen t)
   (message-log-max nil)
+  (initial-scratch-message nil)
   :config
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
