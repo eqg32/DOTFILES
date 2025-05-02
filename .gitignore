@@ -6,7 +6,7 @@
 .emacs.d/*
 !.emacs.d/init.el
 !.emacs.d/core.el
-!.emacs.d/elisp/
+!.emacs.d/lisp/
 !.emacs.d/packages/
 
 # ----------------------------
