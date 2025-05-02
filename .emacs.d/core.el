@@ -25,6 +25,11 @@
 (use-package hl-line
   :hook (prog-mode . hl-line-mode))
 
+(use-package calendar
+  :custom
+  (calendar-date-style 'european)
+  (calendar-week-start-day 1))
+
 (use-package display-line-numbers
   :custom
   (display-line-numbers-type 'relative)
@@ -72,9 +77,7 @@
 
 (use-package org
   :custom
-  (org-agenda-files (directory-files-recursively "~/ORG/" "\\.org$"))
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-indent-mode))))
+  (org-agenda-files (directory-files-recursively "~/ORG/" "\\.org$")))
 
 ;; third-party packages
 
