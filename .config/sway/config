@@ -204,6 +204,8 @@ bindsym {
     XF86AudioMute          exec pulsemixer --toggle-mute
     XF86AudioLowerVolume   exec pulsemixer --change-volume -5
     XF86AudioRaiseVolume   exec pulsemixer --change-volume +5
+    XF86AudioPlay 	   exec emacsclient -e "(listen-pause (listen-current-player))"
+    XF86AudioPause	   exec emacsclient -e "(listen-pause (listen-current-player))"
     XF86MonBrightnessDown  exec brightnessctl s 5%-
     XF86MonBrightnessUp    exec brightnessctl s +5%
 }
