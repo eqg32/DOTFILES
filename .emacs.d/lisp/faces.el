@@ -2,7 +2,7 @@
   (set-face-attribute 'org-level-1 nil :height 1.4)
   (set-face-attribute 'org-level-2 nil :height 1.2))
 
-(defun setup-frame ()
+(defun user/setup-frame ()
   (when (or (memq 'ewal-doom-one custom-enabled-themes)
 	    (memq 'ewal-doom-vibrant custom-enabled-themes))
     (set-face-attribute 'company-tooltip nil
@@ -15,4 +15,4 @@
   (set-face-attribute 'variable-pitch nil :font "Iosevka Aile" :height 140)
   (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 140))
 
-(add-hook 'server-after-make-frame-hook 'setup-frame)
+(add-hook 'server-after-make-frame-hook 'user/setup-frame)

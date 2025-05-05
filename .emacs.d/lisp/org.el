@@ -1,4 +1,4 @@
-(defun setup-org ()
+(defun user/setup-org ()
   (revert-buffer-quick)
   (variable-pitch-mode 1)
   (display-line-numbers-mode -1)
@@ -7,4 +7,4 @@
 		      :font "Iosevka Nerd Font"
 		      :inherit 'default))
 
-(add-hook 'org-mode-hook 'setup-org)
+(add-hook 'org-mode-hook 'user/setup-org)
