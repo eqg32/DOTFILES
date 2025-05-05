@@ -28,7 +28,7 @@
 
 (defun user/cc-run-with-args (args)
   "Function to run main"
-  (interactive "sInput: ")
+  (interactive "sArguments: ")
   (if (file-exists-p "main")
       (shell-command (format "./main %s" args))
     (message "No file exists.")))
