@@ -91,7 +91,7 @@
 
 (use-package org
   :custom
-  (org-agenda-files (directory-files-recursively "~/ORG/" "\\.org$")))
+ (org-agenda-files '("~/ORG/notes.org" "~/ORG/todo.org")))
 
 ;; loading files
 
