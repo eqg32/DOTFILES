@@ -6,4 +6,4 @@
   (setq-default format-all-formatters
 		'(("Python" (black))
 		  ("Go" (gofmt))
-		  ("C" (clang-format)))))
+		  ("C" (clang-format "--style=GNU")))))
