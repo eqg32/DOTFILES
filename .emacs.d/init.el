@@ -69,9 +69,10 @@
   (electric-pair-mode 1))
 
 (use-package eglot
-  :hook ((go-mode . eglot-ensure)
-	 (python-mode . eglot-ensure)
-	 (c-mode . eglot-ensure)))
+  :hook ((go-mode python-mode c-mode) . eglot-ensure)
+  :config
+  (add-to-list 'eglot-server-programs
+	       '((c-mode c++-mode) . ("ccls"))))
 
 (use-package simple
   :config
@@ -86,12 +87,17 @@
   (global-set-key (kbd "C-x C-b") 'ibuffer))
 
 (use-package python
+  :hook
+  (inferior-python-mode . (lambda ()
+			    (setq-local evil-move-cursor-back nil
+					evil-insert-state-cursor 'box)
+			    (display-line-numbers-mode -1)))
   :custom
   (python-shell-interpreter-args "-q"))
 
 (use-package org
   :custom
- (org-agenda-files '("~/ORG/notes.org" "~/ORG/todo.org")))
+  (org-agenda-files '("~/ORG/notes.org" "~/ORG/todo.org")))
 
 ;; loading files
 
@@ -111,16 +117,21 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02"
+     "edf5e3ea8b3bbb4602feef2dfac8a6d5dae316fb78e84f360d55dfda0d37fa09"
+     "1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5"
+     default))
  '(package-selected-packages
-   '(bluetooth bui dired-hacks-utils eldoc-box elisp-refs elpy evil-avy
-	       evil-collection evil-commentary ewal-doom-themes
-	       ewal-spacemacs-themes flx format-all fzf
-	       git-gutter-fringe gnu-elpa-keyring-update go-mode
+   '(bluetooth bui csv csv-mode doom-modeline eldoc-box elisp-refs elpy
+	       evil-avy evil-collection evil-commentary
+	       ewal-doom-themes ewal-spacemacs-themes flx format-all
+	       fzf git-gutter-fringe gnu-elpa-keyring-update go-mode
 	       indent-bars key-chord ligature listen lsp-docker
-	       lsp-treemacs magit mood-line multi-vterm org-evil
-	       org-modern outline-indent "pdf-tools" peep-dired
-	       rainbow-delimiters solaire-mode vertico vterm
-	       yasnippet-snippets)))
+	       lsp-treemacs magit meow mood-line moody multi-vterm
+	       nano-theme org-evil org-modern outline-indent pdf-tools
+	       "pdf-tools" peep-dired rainbow-delimiters solaire-mode
+	       treemacs treemacs-evil vertico vterm yasnippet-snippets)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
