@@ -125,6 +125,7 @@ set $menu    bemenu-run \
 bindsym {
     $mod+Shift+Return exec $term
     $mod+b            exec $browser
+    $mod+Ctrl+s	      exec localsend
     $mod+Return       exec emacsclient -c
     $mod+Shift+d      kill
     $mod+r            exec $menu
