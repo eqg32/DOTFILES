@@ -11,7 +11,7 @@
 			:foreground (face-attribute 'company-tooltip-common :foreground)
 			:background (face-attribute 'default :background))
     (set-face-attribute 'line-number nil :foreground (face-attribute 'font-lock-comment-face :foreground)))
-  (set-frame-parameter nil 'alpha-background 90)
+  ;; (set-frame-parameter nil 'alpha-background 90)
   (set-face-attribute 'variable-pitch nil :font "Iosevka Aile" :height 140)
   (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 140))
 

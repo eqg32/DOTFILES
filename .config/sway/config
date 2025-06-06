@@ -53,26 +53,30 @@ client.unfocused         $color1   $color1   $color1   $color1   $color1
 client.urgent            $color3   $color3   $color3   $color3   $color3
 client.placeholder       $color1   $color1   $color1   $color1   $color1
 
-# Visual Effects
-corner_radius    8
+# Gaps
 gaps       inner 8
 
+# SwayFX Features
+
+# Visual Effects
+# corner_radius    8
+
 # Blur Effects
-blur on
-blur_xray off
-blur_passes 2
-blur_radius 5
+# blur on
+# blur_xray off
+# blur_passes 2
+# blur_radius 5
 
 # Shadow Effects
-shadows on
-shadows_on_csd on
-shadow_blur_radius 16
-shadow_color #0000007F
+# shadows on
+# shadows_on_csd on
+# shadow_blur_radius 16
+# shadow_color #0000007F
 
 # Dimming Effects
-default_dim_inactive 0.2
-dim_inactive_colors.unfocused #000000FF
-dim_inactive_colors.urgent #900000FF
+# default_dim_inactive 0.2
+# dim_inactive_colors.unfocused #000000FF
+# dim_inactive_colors.urgent #900000FF
 
 # Background
 output * bg $wallpaper fill
@@ -86,7 +90,8 @@ exec          brightnessctl s 20%
 exec_always   autotiling-rs
 exec_always   pulseaudio
 exec_always   emacs --daemon
-exec          sleep 1 && swaymsg reload
+exec_always   mpd
+exec          sleep 3 && swaymsg reload
 
 
 #######################
@@ -208,9 +213,10 @@ bindsym {
     XF86AudioMute          exec pulsemixer --toggle-mute
     XF86AudioLowerVolume   exec pulsemixer --change-volume -5
     XF86AudioRaiseVolume   exec pulsemixer --change-volume +5
-    XF86AudioPlay 	   exec emacsclient -e "(listen-pause (listen-current-player))"
-    XF86AudioPause	   exec emacsclient -e "(listen-pause (listen-current-player))"
-    XF86AudioNext	   exec emacsclient -e "(listen-next (listen-current-player))"
+    XF86AudioPlay 	   exec emacsclient -e "(mpc-toggle-play)"
+    XF86AudioPause	   exec emacsclient -e "(mpc-toggle-play)"
+    XF86AudioNext	   exec emacsclient -e "(mpc-next)"
+    XF86AudioPrev	   exec emacsclient -e "(mpc-prev)"
     XF86MonBrightnessDown  exec brightnessctl s 5%-
     XF86MonBrightnessUp    exec brightnessctl s +5%
 }
