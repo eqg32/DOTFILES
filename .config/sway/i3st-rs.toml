@@ -6,7 +6,7 @@ icons = "material-nf"
 
 [[block]]
 block = "sound"
-driver = "pulseaudio"
+driver = "auto"
 
 [[block]]
 block = "backlight"

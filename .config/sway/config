@@ -59,24 +59,24 @@ gaps       inner 8
 # SwayFX Features
 
 # Visual Effects
-# corner_radius    8
+corner_radius    8
 
 # Blur Effects
-# blur on
-# blur_xray off
-# blur_passes 2
-# blur_radius 5
+blur on
+blur_xray off
+blur_passes 2
+blur_radius 5
 
 # Shadow Effects
-# shadows on
-# shadows_on_csd on
-# shadow_blur_radius 16
-# shadow_color #0000007F
+shadows on
+shadows_on_csd on
+shadow_blur_radius 16
+shadow_color #0000007F
 
 # Dimming Effects
-# default_dim_inactive 0.2
-# dim_inactive_colors.unfocused #000000FF
-# dim_inactive_colors.urgent #900000FF
+default_dim_inactive 0.2
+dim_inactive_colors.unfocused #000000FF
+dim_inactive_colors.urgent #900000FF
 
 # Background
 output * bg $wallpaper fill
@@ -87,11 +87,10 @@ output * bg $wallpaper fill
 #######################
 
 exec          brightnessctl s 20%
-exec_always   autotiling-rs
-exec_always   pulseaudio
+exec_always   autotiling
 exec_always   emacs --daemon
+exec_always   pipewire
 exec_always   mpd
-exec          sleep 3 && swaymsg reload
 
 
 #######################
@@ -106,7 +105,8 @@ set $up      k
 set $right   l
 
 set $term    kitty
-set $browser librewolf
+set $browser flatpak run --filesystem=home io.gitlab.librewolf-community
+set $localsend flatpak run --filesystem=home org.localsend.localsend_app
 set $menu    bemenu-run \
     --fn "Iosevka Nerd Font Medium 13" \
     --fb "$background" \
@@ -130,7 +130,7 @@ set $menu    bemenu-run \
 bindsym {
     $mod+Shift+Return exec $term
     $mod+b            exec $browser
-    $mod+Ctrl+s	      exec localsend
+    $mod+Ctrl+s	      exec $localsend
     $mod+Return       exec emacsclient -c
     $mod+Shift+d      kill
     $mod+r            exec $menu
@@ -210,9 +210,9 @@ bindsym {
 
 # Media Controls
 bindsym {
-    XF86AudioMute          exec pulsemixer --toggle-mute
-    XF86AudioLowerVolume   exec pulsemixer --change-volume -5
-    XF86AudioRaiseVolume   exec pulsemixer --change-volume +5
+    XF86AudioMute          exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    XF86AudioLowerVolume   exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    XF86AudioRaiseVolume   exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
     XF86AudioPlay 	   exec emacsclient -e "(mpc-toggle-play)"
     XF86AudioPause	   exec emacsclient -e "(mpc-toggle-play)"
     XF86AudioNext	   exec emacsclient -e "(mpc-next)"
