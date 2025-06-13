@@ -99,6 +99,11 @@
   :custom
   (org-agenda-files '("~/ORG/notes.org" "~/ORG/todo.org")))
 
+(use-package cus-edit
+  :ensure nil
+  :custom
+  (custom-file (concat user-emacs-directory "cus.el")))
+
 ;; loading files
 
 (mapc (lambda (x) (load x))
@@ -112,27 +117,3 @@
 (mapc (lambda (x) (load x))
       (file-expand-wildcards
        (concat user-emacs-directory "lisp/*.el")))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("7c340289e943a8e1fdd76152014b75a976912caaa93285d9ff9581641166221b"
-     "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02"
-     "edf5e3ea8b3bbb4602feef2dfac8a6d5dae316fb78e84f360d55dfda0d37fa09"
-     "1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5"
-     default))
- '(package-selected-packages
-   '("--help" bluetooth eldoc-box elpy evil-avy evil-collection
-     evil-commentary ewal-doom-themes ewal-spacemacs-themes format-all
-     git-gutter-fringe gnu-elpa-keyring-update go-mode indent-bars
-     key-chord ligature "magit" magit mood-line multi-vterm org-evil
-     org-modern outline-indent rainbow-delimiters solaire-mode
-     treemacs vertico vterm yasnippet-snippets)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
