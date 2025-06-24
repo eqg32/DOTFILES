@@ -24,6 +24,23 @@
   (inhibit-startup-screen t)
   (message-log-max nil)
   (initial-scratch-message nil)
+  (mode-line-format '("%e" mode-line-front-space
+		      (:propertize
+		       ("" mode-line-mule-info
+			mode-line-client
+			mode-line-modified
+			mode-line-remote
+			mode-line-window-dedicated)
+		       display (min-width (6.0)))
+		      mode-line-frame-identification
+		      mode-line-buffer-identification
+		      " "
+		      mode-line-position
+		      " "
+		      (:eval (format-mode-line mode-name))
+		      " "
+		      mode-line-misc-info
+		      mode-line-end-spaces))
   :config
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
@@ -33,8 +50,7 @@
   :custom
   (auto-revert-interval 3)
   (auto-revert-verbose nil)
-  :config
-  (global-auto-revert-mode 1))
+  :config (global-auto-revert-mode 1))
 
 (use-package hl-line
   :hook (prog-mode . hl-line-mode))
@@ -45,10 +61,10 @@
   (calendar-week-start-day 1))
 
 (use-package display-line-numbers
+  :hook
+  (prog-mode . display-line-numbers-mode)
   :custom
-  (display-line-numbers-type 'relative)
-  :config
-  (global-display-line-numbers-mode 1))
+  (display-line-numbers-type 'relative))
 
 (use-package files
   :custom
@@ -61,30 +77,27 @@
   (frame-resize-pixelwise t))
 
 (use-package delsel
-  :config
-  (delete-selection-mode 1))
+  :config (delete-selection-mode 1))
 
 (use-package elec-pair
-  :config
-  (electric-pair-mode 1))
+  :config (electric-pair-mode 1))
 
 (use-package eglot
-  :hook ((go-mode python-mode c-mode) . eglot-ensure)
-  :config
-  (add-to-list 'eglot-server-programs
-	       '((c-mode c++-mode) . ("ccls"))))
+  :hook ((go-mode python-mode c-mode c++-mode) . eglot-ensure)
+  :config (add-to-list 'eglot-server-programs
+		       '((c-mode c++-mode) . ("ccls"))))
 
 (use-package simple
-  :config
-  (global-visual-line-mode 1))
+  :hook ((prog-mode . column-number-mode)
+	 (prog-mode . visual-line-mode)))
 
 (use-package icomplete
-  :config
-  (icomplete-vertical-mode 1))
+  :config (icomplete-vertical-mode 1))
 
 (use-package ibuffer
-  :config
-  (global-set-key (kbd "C-x C-b") 'ibuffer))
+  :hook (ibuffer-mode . (lambda ()
+			  (ibuffer-do-sort-by-major-mode)))
+  :config (global-set-key (kbd "C-x C-b") 'ibuffer))
 
 (use-package python
   :hook
@@ -100,7 +113,6 @@
   (org-agenda-files '("~/ORG/notes.org" "~/ORG/todo.org")))
 
 (use-package cus-edit
-  :ensure nil
   :custom
   (custom-file (concat user-emacs-directory "cus.el")))
 

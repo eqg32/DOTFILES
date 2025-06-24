@@ -1,18 +1,13 @@
-(with-eval-after-load 'org
-  (set-face-attribute 'org-level-1 nil :height 1.4)
-  (set-face-attribute 'org-level-2 nil :height 1.2))
-
 (defun user/setup-frame ()
-  (when (or (memq 'ewal-doom-one custom-enabled-themes)
-	    (memq 'ewal-doom-vibrant custom-enabled-themes))
-    (set-face-attribute 'company-tooltip nil
-			:foreground (face-attribute 'font-lock-comment-face :foreground))
-    (set-face-attribute 'company-tooltip-selection nil
-			:foreground (face-attribute 'company-tooltip-common :foreground)
-			:background (face-attribute 'default :background))
-    (set-face-attribute 'line-number nil :foreground (face-attribute 'font-lock-comment-face :foreground)))
-  (set-frame-parameter nil 'alpha-background 90)
-  (set-face-attribute 'variable-pitch nil :font "Iosevka Aile" :height 140)
-  (set-face-attribute 'default nil :font "Iosevka Nerd Font" :height 140))
+  (custom-set-faces
+   '(default ((t :font "Iosevka Nerd Font" :height 140)))
+   '(variable-pitch ((t :font "Iosevka Aile" :height 140)))
+   '(fixed-pitch ((t :font "Iosevka Nerd Font" :height 140)))
+   '(org-level-1 ((t :height 1.4)))
+   '(org-level-2 ((t :height 1.2)))
+   '(org-code ((t :font "Iosevka Nerd Font" :inherit 'default)))))
+
+(add-to-list 'default-frame-alist '(internal-border-width . 12))
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 
 (add-hook 'server-after-make-frame-hook 'user/setup-frame)

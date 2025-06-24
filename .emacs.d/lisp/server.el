@@ -1,4 +1,4 @@
 (defun user/on-open ()
-  (vterm))
+  (ibuffer))
 
 (add-hook 'server-after-make-frame-hook 'user/on-open)
