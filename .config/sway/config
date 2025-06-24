@@ -128,7 +128,7 @@ set $menu    bemenu-run \
 
 # Application Shortcuts
 bindsym {
-    $mod+Shift+Return exec $term
+    $mod+t	      exec $term
     $mod+b            exec $browser
     $mod+Ctrl+s	      exec $localsend
     $mod+Return       exec emacsclient -c
@@ -208,7 +208,7 @@ bindsym {
     $mod+s            scratchpad show
 }
 
-# Media Controls
+# Controls
 bindsym {
     XF86AudioMute          exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     XF86AudioLowerVolume   exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
@@ -219,6 +219,7 @@ bindsym {
     XF86AudioPrev	   exec emacsclient -e "(mpc-prev)"
     XF86MonBrightnessDown  exec brightnessctl s 5%-
     XF86MonBrightnessUp    exec brightnessctl s +5%
+    XF86WakeUp		   exec swaylock --color "$background" --inside-color "$background"
 }
 
 # Screenshots
