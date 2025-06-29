@@ -1,5 +1,4 @@
 (defun user/setup-python ()
-  (elpy-mode 1)
   (indent-bars-mode 1)
   (format-all-mode 1))
 
