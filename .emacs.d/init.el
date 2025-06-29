@@ -83,13 +83,11 @@
   :config (electric-pair-mode 1))
 
 (use-package eglot
-  :hook ((go-mode python-mode c-mode c++-mode) . eglot-ensure)
-  :config (add-to-list 'eglot-server-programs
-		       '((c-mode c++-mode) . ("ccls"))))
+  :hook ((go-mode python-mode c-mode c++-mode) . eglot-ensure))
 
 (use-package simple
   :hook ((prog-mode . column-number-mode)
-	 (prog-mode . visual-line-mode)))
+	 ((prog-mode org-mode) . visual-line-mode)))
 
 (use-package icomplete
   :config (icomplete-vertical-mode 1))
@@ -98,6 +96,10 @@
   :hook (ibuffer-mode . (lambda ()
 			  (ibuffer-do-sort-by-major-mode)))
   :config (global-set-key (kbd "C-x C-b") 'ibuffer))
+
+(use-package flymake
+  :custom
+  (flymake-indicator-type 'margins))
 
 (use-package python
   :hook
