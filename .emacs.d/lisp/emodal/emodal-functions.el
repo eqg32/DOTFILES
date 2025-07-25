@@ -33,13 +33,13 @@
 (defun emodal-forward-word ()
   "Move word forward and mark the beginning."
   (interactive)
-  (set-mark-command nil)
+  (call-interactively 'set-mark-command)
   (forward-word))
 
 (defun emodal-backward-word ()
   "Move word backward and mark the end."
   (interactive)
-  (set-mark-command nil)
+  (call-interactively 'set-mark-command)
   (backward-word))
 
 (defun emodal-insert ()
@@ -82,7 +82,7 @@
 	(end-of-line))
     (progn
       (beginning-of-line)
-      (set-mark-command nil)
+      (call-interactively 'set-mark-command)
       (end-of-line))))
 
 (defun emodal-deactivate-mark ()
@@ -101,7 +101,7 @@
 (defun emodal-change-region ()
   "Kill the region and start inserting text."
   (interactive)
-  (kill-region (point) (point) 'region)
+  (call-interactively 'kill-region)
   (indent-according-to-mode)
   (emodal-mode -1))
 

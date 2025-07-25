@@ -35,6 +35,7 @@
 ;; Faces
 
 (defun user/setup-faces ()
+  "Set faces."
   (custom-set-faces
    '(default ((t :font "Iosevka Nerd Font" :height 140)))
    '(variable-pitch ((t :font "Iosevka Aile" :height 140)))
@@ -49,7 +50,10 @@
  '(internal-border-width . 12)
  '(alpha-background . 90))
 
-(add-hook 'server-after-make-frame-hook 'user/setup-faces)
+(add-hooks
+ 'user/setup-faces
+ 'emacs-startup-hook
+ 'server-after-make-frame-hook)
 
 (provide 'scripts)
 

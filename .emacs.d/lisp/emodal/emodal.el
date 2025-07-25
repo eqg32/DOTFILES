@@ -128,7 +128,7 @@ movement keys. Else do nothing."
 		("Q" . xref-find-references)))
 
 (setq emodal-active-modes '(prog-mode text-mode conf-mode))
-(setq emodal-inactive-modes '(comint-mode))
+(setq emodal-inactive-modes '(fundamental-mode comint-mode))
 
 (emodal-global-mode 1)
 
