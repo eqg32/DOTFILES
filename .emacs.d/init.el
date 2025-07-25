@@ -124,7 +124,8 @@
   :hook ((prog-mode . column-number-mode)
 	 ((prog-mode org-mode) . visual-line-mode))
   :custom
-  (kill-whole-line t))
+  (kill-whole-line t)
+  (completion-show-help nil))
 
 (use-package icomplete
   :config (icomplete-vertical-mode 1))
