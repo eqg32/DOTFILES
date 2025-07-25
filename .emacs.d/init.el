@@ -1,18 +1,52 @@
-;; initialising package.el
+;; Macros:
+
+(defmacro add-hooks (function &rest hooks)
+  "Add FUNCTION to each of the HOOKS."
+  `(dolist
+       (hook (list ,@hooks))
+     (add-hook hook ,function)))
+
+(defmacro add-elements-to-list (list-var &rest elements)
+  "Add ELEMENTS to LIST-VAR."
+  `(dolist
+       (element (list ,@elements))
+     (add-to-list ',list-var element)))
+
+;; Loading files:
+
+(add-elements-to-list
+ load-path
+ (concat user-emacs-directory "lisp/emodal")
+ (concat user-emacs-directory "lisp"))
+
+(require 'emodal)
+(require 'scripts)
+
+(dolist (file (file-expand-wildcards
+	       (concat user-emacs-directory "packages/use-*.el")))
+  (when
+      (file-exists-p file)
+    (load file)))
+
+;; Initialising package.el:
 
 (require 'package)
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+(add-elements-to-list
+ package-archives
+ '("gnu" . "https://elpa.gnu.org/packages/")
+ '("melpa" . "https://melpa.org/packages/"))
+
 (setq package-enable-at-startup nil)
 
 (package-initialize)
 
-;; keyring
+;; Keyring:
 
 (use-package gnu-elpa-keyring-update
   :ensure t)
 
-;; built-in packages
+;; Built-in packages:
 
 (use-package emacs
   :custom
@@ -24,23 +58,24 @@
   (inhibit-startup-screen t)
   (message-log-max nil)
   (initial-scratch-message nil)
-  (mode-line-format '("%e" mode-line-front-space
-		      (:propertize
-		       ("" mode-line-mule-info
-			mode-line-client
-			mode-line-modified
-			mode-line-remote
-			mode-line-window-dedicated)
-		       display (min-width (6.0)))
-		      mode-line-frame-identification
-		      mode-line-buffer-identification
-		      " "
-		      mode-line-position
-		      " "
-		      (:eval (format-mode-line mode-name))
-		      " "
-		      mode-line-misc-info
-		      mode-line-end-spaces))
+  (mode-line-format
+   '("%e" mode-line-front-space
+     (:propertize
+      ("" mode-line-mule-info
+       mode-line-client
+       mode-line-modified
+       mode-line-remote
+       mode-line-window-dedicated)
+      display (min-width (6.0)))
+     mode-line-frame-identification
+     mode-line-buffer-identification
+     " "
+     mode-line-position
+     " "
+     (:eval (format-mode-line mode-name))
+     " "
+     mode-line-misc-info
+     mode-line-end-spaces))
   :config
   (scroll-bar-mode -1)
   (tool-bar-mode -1)
@@ -87,7 +122,9 @@
 
 (use-package simple
   :hook ((prog-mode . column-number-mode)
-	 ((prog-mode org-mode) . visual-line-mode)))
+	 ((prog-mode org-mode) . visual-line-mode))
+  :custom
+  (kill-whole-line t))
 
 (use-package icomplete
   :config (icomplete-vertical-mode 1))
@@ -101,15 +138,6 @@
   :custom
   (flymake-indicator-type 'margins))
 
-(use-package python
-  :hook
-  (inferior-python-mode . (lambda ()
-			    (setq-local evil-move-cursor-back nil
-					evil-insert-state-cursor 'box)
-			    (display-line-numbers-mode -1)))
-  :custom
-  (python-shell-interpreter-args "-q"))
-
 (use-package org
   :custom
   (org-agenda-files '("~/ORG/notes.org" "~/ORG/todo.org")))
@@ -117,17 +145,3 @@
 (use-package cus-edit
   :custom
   (custom-file (concat user-emacs-directory "cus.el")))
-
-;; loading files
-
-(mapc (lambda (x) (load x))
-      (file-expand-wildcards
-       (concat user-emacs-directory "packages/use-*.el")))
-
-(mapc (lambda (x) (add-to-list 'custom-theme-load-path x))
-      (file-expand-wildcards
-       (concat user-emacs-directory "themes/*")))
-
-(mapc (lambda (x) (load x))
-      (file-expand-wildcards
-       (concat user-emacs-directory "lisp/*.el")))

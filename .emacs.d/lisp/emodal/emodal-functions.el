@@ -1,0 +1,132 @@
+;;; emodal-functions.el --- Functions to use with emodal -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;; Funtions that are used with emodal.
+
+;;; Code:
+
+(defun emodal-forward-char ()
+  "Move char forward and deactivate mark."
+  (interactive)
+  (deactivate-mark)
+  (forward-char))
+
+(defun emodal-backward-char ()
+  "Move char backward and deactivate mark."
+  (interactive)
+  (deactivate-mark)
+  (backward-char))
+
+(defun emodal-next-line ()
+  "Move to the next line and deactivate mark."
+  (interactive)
+  (deactivate-mark)
+  (forward-line))
+
+(defun emodal-previous-line ()
+  "Move to the previous line and deactivate mark."
+  (interactive)
+  (deactivate-mark)
+  (forward-line -1))
+
+(defun emodal-forward-word ()
+  "Move word forward and mark the beginning."
+  (interactive)
+  (set-mark-command nil)
+  (forward-word))
+
+(defun emodal-backward-word ()
+  "Move word backward and mark the end."
+  (interactive)
+  (set-mark-command nil)
+  (backward-word))
+
+(defun emodal-insert ()
+  "Insert text."
+  (interactive)
+  (emodal-mode -1))
+
+(defun emodal-append ()
+  "Append text."
+  (interactive)
+  (forward-char)
+  (emodal-mode -1))
+
+(defun emodal-open-below ()
+  "Open line below."
+  (interactive)
+  (save-excursion
+    (forward-line)
+    (beginning-of-visual-line)
+    (open-line 1))
+  (forward-line)
+  (indent-according-to-mode)
+  (emodal-mode -1))
+
+(defun emodal-open-above ()
+  "Open line above."
+  (interactive)
+  (beginning-of-line)
+  (open-line 1)
+  (indent-according-to-mode)
+  (emodal-mode -1))
+
+(defun emodal-extend ()
+  "Extend line selection."
+  (interactive)
+  (if
+      (region-active-p)
+      (progn
+	(forward-line)
+	(end-of-line))
+    (progn
+      (beginning-of-line)
+      (set-mark-command nil)
+      (end-of-line))))
+
+(defun emodal-deactivate-mark ()
+  "Deactivate mark."
+  (interactive)
+  (deactivate-mark))
+
+(defun emodal-save-line ()
+  "Save line into kill ring."
+  (interactive)
+  (save-excursion
+    (kill-ring-save
+     (line-beginning-position)
+     (line-end-position))))
+
+(defun emodal-change-region ()
+  "Kill the region and start inserting text."
+  (interactive)
+  (kill-region (point) (point) 'region)
+  (indent-according-to-mode)
+  (emodal-mode -1))
+
+(defun emodal-scroll-half-screen-up ()
+  "Scroll half screen up."
+  (interactive)
+  (scroll-up-command (/ (window-body-height) 2)))
+
+(defun emodal-scroll-half-screen-down ()
+  "Scroll half screen down."
+  (interactive)
+  (scroll-down-command (/ (window-body-height) 2)))
+
+(defun emodal-beginning-of-line ()
+  "Deactivate mark and move to the beginning of line."
+  (interactive)
+  (deactivate-mark)
+  (beginning-of-line))
+
+(defun emodal-end-of-line ()
+  "Deactivate mark and move to the end of line."
+  (interactive)
+  (deactivate-mark)
+  (end-of-line))
+
+(provide 'emodal-functions)
+
+;;; emodal-functions.el ends here
