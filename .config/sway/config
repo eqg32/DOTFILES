@@ -11,7 +11,7 @@ include ~/.cache/wal/colors-sway
 
 bar {
     # Position & Appearance
-    position            top
+    position            bottom
     height              32
     workspace_min_width 32
     separator_symbol  "|"
@@ -38,9 +38,6 @@ bar {
 #######################
 ###  WINDOW STYLE   ###
 #######################
-
-# Cursor
-seat seat0 xcursor_theme Bibata-Modern-Ice
 
 # Borders
 default_border            pixel 2
@@ -89,7 +86,7 @@ output * bg $wallpaper fill
 exec          brightnessctl s 20%
 exec_always   autotiling
 exec_always   emacs --daemon
-exec_always   pipewire
+exec_always   dbus-run-session pulseaudio
 exec_always   mpd
 
 
@@ -105,7 +102,7 @@ set $up      k
 set $right   l
 
 set $term    kitty
-set $browser flatpak run --filesystem=home io.gitlab.librewolf-community
+set $browser librewolf
 set $localsend flatpak run --filesystem=home org.localsend.localsend_app
 set $menu    bemenu-run \
     --fn "Iosevka Nerd Font Medium 13" \
@@ -210,9 +207,9 @@ bindsym {
 
 # Controls
 bindsym {
-    XF86AudioMute          exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-    XF86AudioLowerVolume   exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-    XF86AudioRaiseVolume   exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    XF86AudioMute          exec pulsemixer --toggle-mute
+    XF86AudioLowerVolume   exec pulsemixer --change-volume -5
+    XF86AudioRaiseVolume   exec pulsemixer --change-volume +5
     XF86AudioPlay 	   exec emacsclient -e "(mpc-toggle-play)"
     XF86AudioPause	   exec emacsclient -e "(mpc-toggle-play)"
     XF86AudioNext	   exec emacsclient -e "(mpc-next)"
