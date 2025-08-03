@@ -27,10 +27,14 @@
   :init-value nil
   :lighter "[EMODAL]"
   :keymap emodal-mode-map
-  (keymap-local-set "<escape>" (lambda ()
-  				 "Activate `emodal-mode'."
-  				 (interactive)
-  				 (emodal-mode 1)))
+  (dolist
+      (binding '("C-x C-y" "<escape>"))
+    (keymap-local-set
+     binding
+     (lambda ()
+       "Activate `emodal-mode'."
+       (interactive)
+       (emodal-mode 1))))
   (if
       emodal-mode
       (setq-local cursor-type 'box)
