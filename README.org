@@ -18,20 +18,20 @@ If you do not want to install guix package manager, you can simply ~stow .~ in ~
 
 ** Packages list
 
-- emacs
-- kitty
-- swayfx
-- i3status-rust
-- bemenu
-- i3-autotiling
-- swaylock
-- grimshot
-- wl-clipboard
-- brightnessctl
-- mpd
-- mpc
-- pulseaudio
-- pulsemixer
+- ~emacs~
+- ~kitty~
+- ~swayfx~
+- ~i3status-rust~
+- ~bemenu~
+- ~i3-autotiling~
+- ~swaylock~
+- ~grimshot~
+- ~wl-clipboard~
+- ~brightnessctl~
+- ~mpd~
+- ~mpc~
+- ~pulseaudio~
+- ~pulsemixer~
 
 ** About some packages
 
