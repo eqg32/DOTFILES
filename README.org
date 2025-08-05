@@ -1,3 +1,44 @@
 * Introduction
 
-Just my configuration files for sway, text editors and a terminal. Comfortable for me. Perhaps, here will be something more.
+Just my configuration files for sway, Emacs and a terminal. Comfortable for me.
+
+* Installation
+
+** Guix method (Recommended)
+
+To install the configuration simply run the command below. This README will not cover the installation of guix on a foreign distro.
+
+#+begin_src bash
+guix home reconfigure conf.scm 
+#+end_src
+
+** Stow method
+
+If you do not want to install guix package manager, you can simply ~stow .~ in ~home/~ directory instead. This will not install the packages that are used in the configuration, but you are still able to install them using your native package manager.
+
+** Packages list
+
+- emacs
+- kitty
+- swayfx
+- i3status-rust
+- bemenu
+- i3-autotiling
+- swaylock
+- grimshot
+- wl-clipboard
+- brightnessctl
+- mpd
+- mpc
+- pulseaudio
+- pulsemixer
+
+** About some packages
+
+Some packages can't be set up easily with just guix. So, here is the list of packages that you should install with your native package manager (if you are are using guix on a foreign distro. Otherwise guix system users will figure it out themselves):
+
+- ~swaylock~
+
+One should also install ~Iosevka Nerd Font~.
+
+

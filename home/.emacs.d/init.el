@@ -22,12 +22,6 @@
 (require 'emodal)
 (require 'scripts)
 
-(dolist (file (file-expand-wildcards
-	       (concat user-emacs-directory "packages/use-*.el")))
-  (when
-      (file-exists-p file)
-    (load file)))
-
 ;; Initialising package.el:
 
 (require 'package)
@@ -146,3 +140,11 @@
 (use-package cus-edit
   :custom
   (custom-file (concat user-emacs-directory "cus.el")))
+
+;; External packages:
+
+(dolist (file (file-expand-wildcards
+	       (concat user-emacs-directory "packages/use-*.el")))
+  (when
+      (file-exists-p file)
+    (load file)))
