@@ -18,13 +18,15 @@ If you do not want to install guix package manager, you can simply ~stow .~ in ~
 
 ** Packages list
 
+This package list covers all packages that are used in the configuration. Not including ~Iosevka Nerd Font~.
+
 - ~emacs~
 - ~kitty~
 - ~swayfx~
 - ~i3status-rust~
 - ~bemenu~
 - ~i3-autotiling~
-- ~swaylock~
+- ~swaylock~ *
 - ~grimshot~
 - ~wl-clipboard~
 - ~brightnessctl~
@@ -33,12 +35,10 @@ If you do not want to install guix package manager, you can simply ~stow .~ in ~
 - ~pulseaudio~
 - ~pulsemixer~
 
-** About some packages
+** * About some packages
 
 Some packages can't be set up easily with just guix. So, here is the list of packages that you should install with your native package manager (if you are are using guix on a foreign distro. Otherwise guix system users will figure it out themselves):
 
 - ~swaylock~
-
-One should also install ~Iosevka Nerd Font~.
 
 
