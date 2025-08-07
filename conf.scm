@@ -6,8 +6,7 @@
 (home-environment
  (packages
   (specifications->packages
-   '("emacs-pgtk"
-     "kitty"
+   '("kitty"
      "swayfx" "i3status-rust" "bemenu" "i3-autotiling"
      "grimshot" "wl-clipboard"
      "brightnessctl"
