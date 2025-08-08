@@ -32,6 +32,12 @@
    (variable-pitch-mode -1))
  'org-mode-hook)
 
+;; Env variables
+
+(when
+    (not (display-graphic-p))
+  (setenv "COLORTERM"))
+
 ;; Faces
 
 (defun user/setup-faces ()
@@ -43,7 +49,11 @@
    '(fixed-pitch-serif ((t :font "Iosevka Nerd Font" :height 140)))
    '(org-level-1 ((t :height 1.4)))
    '(org-level-2 ((t :height 1.2)))
-   '(org-code ((t :font "Iosevka Nerd Font" :inherit 'default)))))
+   '(org-code ((t :font "Iosevka Nerd Font" :inherit 'default))))
+  (when
+      (not (display-graphic-p))
+    (custom-set-faces
+     '(default ((t :background "unspecified-bg"))))))
 
 (add-elements-to-list
  default-frame-alist

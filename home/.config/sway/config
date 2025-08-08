@@ -101,7 +101,7 @@ set $down    j
 set $up      k
 set $right   l
 
-set $term    kitty
+set $term    alacritty
 set $browser librewolf
 set $menu    bemenu-run \
     --fn "Iosevka Nerd Font Medium 13" \
@@ -126,7 +126,7 @@ set $menu    bemenu-run \
 bindsym {
     $mod+t	      exec $term
     $mod+b            exec $browser
-    $mod+Return       exec emacsclient -c
+    $mod+Return       exec alacritty --command sh -c "TERM=alacritty-direct emacsclient -c -nw"
     $mod+Shift+d      kill
     $mod+r            exec $menu
 }

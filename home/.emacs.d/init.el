@@ -81,9 +81,6 @@
   (auto-revert-verbose nil)
   :config (global-auto-revert-mode 1))
 
-(use-package hl-line
-  :hook (prog-mode . hl-line-mode))
-
 (use-package calendar
   :custom
   (calendar-date-style 'european)

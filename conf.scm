@@ -6,7 +6,7 @@
 (home-environment
  (packages
   (specifications->packages
-   '("kitty"
+   '("alacritty"
      "swayfx" "i3status-rust" "bemenu" "i3-autotiling"
      "grimshot" "wl-clipboard"
      "brightnessctl"
