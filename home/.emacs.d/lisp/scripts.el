@@ -32,12 +32,6 @@
    (variable-pitch-mode -1))
  'org-mode-hook)
 
-;; Env variables
-
-(when
-    (not (display-graphic-p))
-  (setenv "COLORTERM"))
-
 ;; Faces
 
 (defun user/setup-faces ()

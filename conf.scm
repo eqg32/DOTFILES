@@ -6,7 +6,8 @@
 (home-environment
  (packages
   (specifications->packages
-   '("alacritty"
+   '("emacs-no-x"
+     "alacritty"
      "swayfx" "i3status-rust" "bemenu" "i3-autotiling"
      "grimshot" "wl-clipboard"
      "brightnessctl"

@@ -20,8 +20,8 @@ If you do not want to install guix package manager, you can simply ~stow .~ in ~
 
 This package list covers all packages that are used in the configuration. Not including ~Iosevka Nerd Font~.
 
-- ~emacs-pgtk~ *
-- ~kitty~
+- ~emacs-no-x~
+- ~alacritty~
 - ~swayfx~
 - ~i3status-rust~
 - ~bemenu~
@@ -40,6 +40,5 @@ This package list covers all packages that are used in the configuration. Not in
 Some packages can't be set up easily with just guix. So, here is the list of packages that you should install with your native package manager (if you are are using guix on a foreign distro. Otherwise guix system users will figure it out themselves):
 
 - ~swaylock~
-- ~emacs-pgtk~
 
 

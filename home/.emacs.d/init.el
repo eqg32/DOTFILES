@@ -71,7 +71,8 @@
      mode-line-misc-info
      mode-line-end-spaces))
   :config
-  (scroll-bar-mode -1)
+  (when (fboundp 'scroll-bar-mode)
+    (scroll-bar-mode -1))
   (tool-bar-mode -1)
   (menu-bar-mode -1))
 
