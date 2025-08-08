@@ -1,0 +1,13 @@
+[general]
+
+import = [ "~/.cache/wal/colors-alacritty.toml" ]
+
+[font]
+
+normal = { family = "Iosevka Nerd Font" }
+size = 14
+
+[window]
+
+padding = {x = 8, y = 8}
+opacity = 0.9
