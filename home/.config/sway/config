@@ -124,11 +124,11 @@ set $menu    bemenu-run \
 
 # Application Shortcuts
 bindsym {
-    $mod+t	      exec $term
-    $mod+b            exec $browser
-    $mod+Return       exec alacritty --command sh -c "TERM=alacritty-direct emacsclient -c -nw"
-    $mod+Shift+d      kill
+    $mod+Shift+Return exec $term
+    $mod+Return       exec $term --command sh -c "TERM=alacritty-direct emacsclient -c -nw"
     $mod+r            exec $menu
+    $mod+b            exec $browser
+    $mod+Shift+d      kill
 }
 
 # Window Management
