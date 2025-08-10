@@ -53,24 +53,17 @@
   (forward-char)
   (emodal-mode -1))
 
-(defun emodal-open-below ()
+(defun emodal-open-above ()
   "Open line below."
   (interactive)
-  (save-excursion
-    (forward-line)
-    (beginning-of-visual-line)
-    (open-line 1))
-  (forward-line)
-  (indent-according-to-mode)
-  (emodal-mode -1))
+  (end-of-line)
+  (newline))
 
-(defun emodal-open-above ()
+(defun emodal-open-below ()
   "Open line above."
   (interactive)
   (beginning-of-line)
-  (open-line 1)
-  (indent-according-to-mode)
-  (emodal-mode -1))
+  (open-line 1))
 
 (defun emodal-extend ()
   "Extend line selection."
@@ -79,7 +72,8 @@
       (region-active-p)
       (progn
 	(forward-line)
-	(end-of-line))
+	(end-of-line)
+	(forward-char 1))
     (progn
       (beginning-of-line)
       (call-interactively 'set-mark-command)
@@ -114,18 +108,6 @@
   "Scroll half screen down."
   (interactive)
   (scroll-down-command (/ (window-body-height) 2)))
-
-(defun emodal-beginning-of-line ()
-  "Deactivate mark and move to the beginning of line."
-  (interactive)
-  (deactivate-mark)
-  (beginning-of-line))
-
-(defun emodal-end-of-line ()
-  "Deactivate mark and move to the end of line."
-  (interactive)
-  (deactivate-mark)
-  (end-of-line))
 
 (provide 'emodal-functions)
 
