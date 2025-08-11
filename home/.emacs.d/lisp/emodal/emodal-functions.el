@@ -72,8 +72,7 @@
       (region-active-p)
       (progn
 	(forward-line)
-	(end-of-line)
-	(forward-char 1))
+	(end-of-line))
     (progn
       (beginning-of-line)
       (call-interactively 'set-mark-command)
