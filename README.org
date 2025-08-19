@@ -26,7 +26,7 @@ This package list covers all packages that are used in the configuration. Not in
 - ~i3status-rust~
 - ~bemenu~
 - ~i3-autotiling~
-- ~swaylock~ *
+- ~gtklock~ *
 - ~grimshot~
 - ~wl-clipboard~
 - ~brightnessctl~
@@ -39,6 +39,6 @@ This package list covers all packages that are used in the configuration. Not in
 
 Some packages can't be set up easily with just guix. So, here is the list of packages that you should install with your native package manager (if you are are using guix on a foreign distro. Otherwise guix system users will figure it out themselves):
 
-- ~swaylock~
+- ~gtklock~
 
 

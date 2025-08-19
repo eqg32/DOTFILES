@@ -214,7 +214,7 @@ bindsym {
     XF86AudioPrev	   exec mpc prev
     XF86MonBrightnessDown  exec brightnessctl s 5%-
     XF86MonBrightnessUp    exec brightnessctl s +5%
-    XF86WakeUp		   exec swaylock --color "$background" -u
+    XF86WakeUp		   exec gtklock
 }
 
 # Screenshots
