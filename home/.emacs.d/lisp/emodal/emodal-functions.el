@@ -22,13 +22,13 @@
   "Move to the next line and deactivate mark."
   (interactive)
   (deactivate-mark)
-  (forward-line))
+  (call-interactively 'next-line))
 
 (defun emodal-previous-line ()
   "Move to the previous line and deactivate mark."
   (interactive)
   (deactivate-mark)
-  (forward-line -1))
+  (call-interactively 'previous-line))
 
 (defun emodal-forward-word ()
   "Move word forward and mark the beginning."

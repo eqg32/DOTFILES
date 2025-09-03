@@ -28,7 +28,7 @@
   :lighter "[EMODAL]"
   :keymap emodal-mode-map
   (dolist
-      (binding '("C-x C-y" "<escape>"))
+      (binding '("C-x C-y" "C-;" "<escape>"))
     (keymap-local-set
      binding
      (lambda ()
