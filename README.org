@@ -20,7 +20,7 @@ If you do not want to install guix package manager, you can simply ~stow .~ in ~
 
 This package list covers all packages that are used in the configuration. Not including ~Iosevka Nerd Font~.
 
-- ~emacs-no-x~
+- ~emacs-pgtk~
 - ~alacritty~
 - ~swayfx~
 - ~i3status-rust~

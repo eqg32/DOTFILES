@@ -6,7 +6,7 @@
 (home-environment
  (packages
   (specifications->packages
-   '("emacs-no-x"
+   '("emacs-pgtk"
      "alacritty"
      "swayfx" "i3status-rust" "bemenu" "i3-autotiling"
      "grimshot" "wl-clipboard"

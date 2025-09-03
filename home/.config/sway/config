@@ -85,7 +85,6 @@ output * bg $wallpaper fill
 
 exec          brightnessctl s 20%
 exec_always   autotiling
-exec_always   emacs --daemon
 exec_always   dbus-run-session pulseaudio
 exec_always   mpd
 
@@ -124,11 +123,11 @@ set $menu    bemenu-run \
 
 # Application Shortcuts
 bindsym {
-    $mod+Shift+Return exec $term
-    $mod+Return       exec $term --command sh -c "TERM=alacritty-direct emacsclient -c -nw"
-    $mod+r            exec $menu
-    $mod+b            exec $browser
-    $mod+Shift+d      kill
+    $mod+Return		exec $term
+    $mod+Shift+Return   exec emacs -ib 12
+    $mod+r 		exec $menu
+    $mod+b              exec $browser
+    $mod+Shift+d      	kill
 }
 
 # Window Management
