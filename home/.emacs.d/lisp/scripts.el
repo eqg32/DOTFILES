@@ -18,9 +18,17 @@
  'c++-mode-hook
  'objc-mode-hook)
 
-;; Emacs server client startup
+;; Emacs startup
 
-(add-hooks 'ibuffer 'server-after-make-frame-hook)
+(add-hooks
+ (lambda ()
+   "Start `ansi-term'."
+   (ansi-term "/bin/bash"))
+ 'emacs-startup-hook)
+
+(add-hooks
+ 'ibuffer
+ 'server-after-make-frame-hook)
 
 ;; Org-mode
 
@@ -42,16 +50,16 @@
    '(variable-pitch ((t :font "Iosevka Aile" :height 140)))
    '(fixed-pitch ((t :font "Iosevka Nerd Font" :height 140)))
    '(fixed-pitch-serif ((t :font "Iosevka Nerd Font" :height 140)))
-   '(flymake-note ((t (:underline (:color foreground-color :style wave :position nil)))))
-   '(flymake-warning ((t (:underline (:color foreground-color :style line :position nil)))))
-   '(flymake-error ((t (:underline (:color foreground-color :style line :position nil))))) 
    '(org-level-1 ((t :height 1.4)))
    '(org-level-2 ((t :height 1.2)))
    '(org-code ((t :font "Iosevka Nerd Font" :inherit 'default))))
   (when
       (not (display-graphic-p))
     (custom-set-faces
-     '(default ((t :background "unspecified-bg"))))))
+     '(default ((t :background "unspecified-bg")))
+     '(flymake-note ((t (:underline (:color foreground-color :style wave :position nil)))))
+     '(flymake-warning ((t (:underline (:color foreground-color :style line :position nil)))))
+     '(flymake-error ((t (:underline (:color foreground-color :style line :position nil))))))))
 
 (add-elements-to-list
  default-frame-alist
