@@ -21,12 +21,6 @@
 ;; Emacs startup
 
 (add-hooks
- (lambda ()
-   "Start `ansi-term'."
-   (ansi-term "/bin/bash"))
- 'emacs-startup-hook)
-
-(add-hooks
  'ibuffer
  'server-after-make-frame-hook)
 
