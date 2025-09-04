@@ -25,7 +25,7 @@
   "Mode for modal editing in Emacs."
   :global nil
   :init-value nil
-  :lighter "[EMODAL]"
+  :lighter "[EM]"
   :keymap emodal-mode-map
   (dolist
       (binding '("C-x C-y" "C-;" "<escape>"))
@@ -37,9 +37,12 @@
        (emodal-mode 1))))
   (if
       emodal-mode
-      (setq-local cursor-type 'box)
+      (progn
+	(setq-local cursor-type 'box)
+	(setq-local header-line-format "[EM] motion"))
     (progn
       (setq-local cursor-type 'bar)
+      (setq-local header-line-format "[EM] insert")
       (deactivate-mark))))
 
 (defun emodal--keys-not-bound (keys)
