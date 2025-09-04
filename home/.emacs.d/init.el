@@ -31,7 +31,7 @@
  '("gnu" . "https://elpa.gnu.org/packages/")
  '("melpa" . "https://melpa.org/packages/"))
 
-(setq package-enable-at-startup nil)
+(setopt package-enable-at-startup nil)
 
 (package-initialize)
 

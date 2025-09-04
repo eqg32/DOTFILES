@@ -13,7 +13,7 @@
    "Settings for `c-mode' and other."
    (c-toggle-auto-newline 1)
    (c-set-style "gnu")
-   (setq c-basic-offset 4))
+   (setopt c-basic-offset 4))
  'c-mode-hook
  'c++-mode-hook
  'objc-mode-hook)
