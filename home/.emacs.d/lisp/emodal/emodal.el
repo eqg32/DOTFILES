@@ -39,10 +39,10 @@
       emodal-mode
       (progn
 	(setq-local cursor-type 'box)
-	(setq-local header-line-format "[EMODAL]"))
+	(setq-local header-line-format "[EM] motion"))
     (progn
       (setq-local cursor-type 'bar)
-      (setq-local header-line-format "[INSERT]")
+      (setq-local header-line-format "[EM] insert")
       (deactivate-mark))))
 
 (defun emodal--keys-not-bound (keys)
