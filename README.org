@@ -4,17 +4,7 @@ Just my configuration files for sway, Emacs and a terminal. Comfortable for me.
 
 * Installation
 
-** Guix method (Recommended)
-
-To install the configuration simply run the command below. This README will not cover the installation of guix on a foreign distro.
-
-#+begin_src bash
-guix home reconfigure conf.scm 
-#+end_src
-
-** Stow method
-
-If you do not want to install guix package manager, you can simply ~stow .~ in ~home/~ directory instead. This will not install the packages that are used in the configuration, but you are still able to install them using your native package manager.
+You can simply ~stow .~ in the directory. This will not, sadly, install the packages that are used in the configuration, but you are still able to install them using your native package manager. Some time ago I used ~guix~ package manager, but I moved from it.
 
 ** Packages list
 
@@ -25,8 +15,8 @@ This package list covers all packages that are used in the configuration. Not in
 - ~swayfx~
 - ~i3status-rust~
 - ~bemenu~
-- ~i3-autotiling~
-- ~gtklock~ *
+- ~autotiling~
+- ~gtklock~
 - ~grimshot~
 - ~wl-clipboard~
 - ~brightnessctl~
@@ -34,11 +24,5 @@ This package list covers all packages that are used in the configuration. Not in
 - ~mpc~
 - ~pulseaudio~
 - ~pulsemixer~
-
-** * About some packages
-
-Some packages can't be set up easily with just guix. So, here is the list of packages that you should install with your native package manager (if you are are using guix on a foreign distro. Otherwise guix system users will figure it out themselves):
-
-- ~gtklock~
 
 

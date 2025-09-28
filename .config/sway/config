@@ -101,7 +101,7 @@ set $up      k
 set $right   l
 
 set $term    alacritty
-set $browser librewolf
+set $browser luakit
 set $menu    bemenu-run \
     --fn "Iosevka Nerd Font Medium 13" \
     --fb "$background" \
@@ -124,7 +124,7 @@ set $menu    bemenu-run \
 # Application Shortcuts
 bindsym {
     $mod+Return		exec $term
-    $mod+Shift+Return   exec emacs -ib 12
+    $mod+Shift+Return   exec $term --command eru
     $mod+r 		exec $menu
     $mod+b              exec $browser
     $mod+Shift+d      	kill
