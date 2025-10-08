@@ -6,51 +6,9 @@
 
 ;;; Code:
 
-(defun emodal-forward-char ()
-  "Move char forward and deactivate mark."
-  (interactive)
-  (deactivate-mark)
-  (forward-char))
-
-(defun emodal-backward-char ()
-  "Move char backward and deactivate mark."
-  (interactive)
-  (deactivate-mark)
-  (backward-char))
-
-(defun emodal-next-line ()
-  "Move to the next line and deactivate mark."
-  (interactive)
-  (deactivate-mark)
-  (call-interactively 'next-line))
-
-(defun emodal-previous-line ()
-  "Move to the previous line and deactivate mark."
-  (interactive)
-  (deactivate-mark)
-  (call-interactively 'previous-line))
-
-(defun emodal-forward-word ()
-  "Move word forward and mark the beginning."
-  (interactive)
-  (call-interactively 'set-mark-command)
-  (forward-word))
-
-(defun emodal-backward-word ()
-  "Move word backward and mark the end."
-  (interactive)
-  (call-interactively 'set-mark-command)
-  (backward-word))
-
 (defun emodal-insert ()
   "Insert text."
   (interactive)
-  (emodal-mode -1))
-
-(defun emodal-append ()
-  "Append text."
-  (interactive)
-  (forward-char)
   (emodal-mode -1))
 
 (defun emodal-open-above ()
@@ -65,43 +23,32 @@
   (beginning-of-line)
   (open-line 1))
 
-(defun emodal-extend ()
-  "Extend line selection."
+(defun emodal-change ()
+  "Kill the region or word and start inserting text."
   (interactive)
   (if
       (region-active-p)
-      (progn
-	(forward-line)
-	(end-of-line))
-    (progn
-      (beginning-of-line)
-      (call-interactively 'set-mark-command)
-      (end-of-line))))
-
-(defun emodal-deactivate-mark ()
-  "Deactivate mark."
-  (interactive)
-  (deactivate-mark))
-
-(defun emodal-save-line ()
-  "Save line into kill ring."
-  (interactive)
-  (save-excursion
-    (kill-ring-save
-     (line-beginning-position)
-     (line-end-position))))
-
-(defun emodal-change-region ()
-  "Kill the region and start inserting text."
-  (interactive)
-  (call-interactively 'kill-region)
-  (indent-according-to-mode)
+      (call-interactively 'kill-region)
+    (call-interactively 'kill-word))
   (emodal-mode -1))
+
+(defun emodal-kill ()
+  "Kill the region or word."
+  (interactive)
+  (if
+      (region-active-p)
+      (call-interactively 'kill-region)
+    (call-interactively 'kill-word)))
 
 (defun emodal-scroll-half-screen-up ()
   "Scroll half screen up."
   (interactive)
   (scroll-up-command (/ (window-body-height) 2)))
+
+(defun emodal-save-line ()
+  "Save whole line to the kill-ring."
+  (interactive)
+  (kill-ring-save (line-beginning-position) (line-end-position)))
 
 (defun emodal-scroll-half-screen-down ()
   "Scroll half screen down."

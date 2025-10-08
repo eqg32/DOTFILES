@@ -124,7 +124,7 @@ set $menu    bemenu-run \
 # Application Shortcuts
 bindsym {
     $mod+Return		exec $term
-    $mod+Shift+Return   exec $term --command eru
+    $mod+Shift+Return   exec $term --command sh -c eru
     $mod+r 		exec $menu
     $mod+b              exec $browser
     $mod+Shift+d      	kill

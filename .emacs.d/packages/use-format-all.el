@@ -4,5 +4,5 @@
   :config
   (setq-default format-all-formatters
 		'(("Python" (black "--line-length=79"))
-		  ("C" (astyle "--style=gnu" "-s2"))
-		  ("C++" (astyle "--style=gnu" "-s2")))))
+		  ("C" (clang-format "--style=GNU"))
+		  ("C++" (clang-format "--style=GNU")))))
