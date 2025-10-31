@@ -134,7 +134,7 @@ movement keys. Else do nothing."
 (setq emodal-active-modes '(prog-mode text-mode conf-mode))
 (setq emodal-inactive-modes '(fundamental-mode comint-mode))
 
-(emodal-global-mode 1)
+(emodal-global-mode -1)
 
 (provide 'emodal)
 
