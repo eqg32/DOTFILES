@@ -55,12 +55,12 @@ client.urgent            $color3   $color3   $color3   $color3   $color3
 client.placeholder       $color1   $color1   $color1   $color1   $color1
 
 # Gaps
-gaps       inner 8
+# gaps       outer 8
 
 # SwayFX Features
 
 # Visual Effects
-corner_radius    8
+# corner_radius    8
 
 # Blur Effects
 blur on
@@ -69,13 +69,13 @@ blur_passes 2
 blur_radius 5
 
 # Shadow Effects
-shadows on
-shadows_on_csd on
-shadow_blur_radius 16
-shadow_color #0000007F
+# shadows on
+# shadows_on_csd on
+# shadow_blur_radius 16
+# shadow_color #0000007F
 
 # Dimming Effects
-default_dim_inactive 0.2
+default_dim_inactive 0.1
 dim_inactive_colors.unfocused #000000FF
 dim_inactive_colors.urgent #900000FF
 
@@ -90,6 +90,7 @@ output * bg $wallpaper fill
 exec          brightnessctl s 20%
 exec_always   autotiling
 exec_always   dbus-run-session pulseaudio
+exec_always   dbus-run-session mako
 exec_always   mpd
 
 
@@ -105,7 +106,7 @@ set $up      k
 set $right   l
 
 set $term    alacritty
-set $browser luakit
+set $browser qutebrowser
 set $menu    bemenu-run \
     --fn "Iosevka Nerd Font Medium 13" \
     --fb "$background" \
@@ -208,9 +209,9 @@ bindsym {
 
 # Controls
 bindsym {
-    XF86AudioMute          exec pulsemixer --toggle-mute
-    XF86AudioLowerVolume   exec pulsemixer --change-volume -5
-    XF86AudioRaiseVolume   exec pulsemixer --change-volume +5
+    XF86AudioMute          exec sound-control mute
+    XF86AudioLowerVolume   exec sound-control decrease
+    XF86AudioRaiseVolume   exec sound-control increase
     XF86AudioPlay 	   exec mpc toggle
     XF86AudioPause	   exec mpc toggle 
     XF86AudioNext	   exec mpc next
