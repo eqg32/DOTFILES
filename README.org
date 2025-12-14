@@ -1,6 +1,6 @@
 * Introduction
 
-Just my configuration files for sway, Emacs and a terminal. Comfortable for me.
+Just my configuration files for sway and a terminal. Comfortable for me.
 
 * Installation
 
@@ -10,7 +10,8 @@ You can simply ~stow .~ in the directory. This will not, sadly, install the pack
 
 This package list covers all packages that are used in the configuration. Not including ~Iosevka Nerd Font~.
 
-- ~emacs-pgtk~
+- ~helix~
+- ~nushell~
 - ~alacritty~
 - ~swayfx~
 - ~i3status-rust~
@@ -24,5 +25,3 @@ This package list covers all packages that are used in the configuration. Not in
 - ~mpc~
 - ~pulseaudio~
 - ~pulsemixer~
-
-

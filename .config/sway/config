@@ -65,7 +65,7 @@ client.placeholder       $color1   $color1   $color1   $color1   $color1
 # Blur Effects
 blur on
 blur_xray off
-blur_passes 2
+blur_passes 4
 blur_radius 5
 
 # Shadow Effects
@@ -88,10 +88,11 @@ output * bg $wallpaper fill
 #######################
 
 exec          brightnessctl s 20%
-exec_always   autotiling
+exec_always   autotiling -sw 0.6 -l 2
 exec_always   dbus-run-session pulseaudio
-exec_always   dbus-run-session mako
+exec_always   dbus-run-session mako 
 exec_always   mpd
+exec_always   battery-watcher 20
 
 
 #######################
@@ -241,7 +242,7 @@ bindgesture {
 
 input "type:keyboard" {
     xkb_layout   us,ru
-    xkb_options  grp:alt_shift_toggle,caps:ctrl_modifier
+    xkb_options  grp:win_space_toggle,caps:ctrl_modifier
 }
 
 input "type:touchpad" {
@@ -259,15 +260,15 @@ input "type:touchpad" {
 
 mode "resize" {
     bindsym {
-        $left   resize shrink width 10px
-        $down   resize grow height 10px
-        $up     resize shrink height 10px
-        $right  resize grow width 10px
+        $left   resize shrink width 8px
+        $down   resize grow height 8px
+        $up     resize shrink height 8px
+        $right  resize grow width 8px
         
-        Left    resize shrink width 10px
-        Down    resize grow height 10px
-        Up      resize shrink height 10px
-        Right   resize grow width 10px
+        Left    resize shrink width 8px
+        Down    resize grow height 8px
+        Up      resize shrink height 8px
+        Right   resize grow width 8px
         
         Return  mode "default"
         Escape  mode "default"

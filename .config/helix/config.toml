@@ -1,0 +1,49 @@
+theme = "everforest_dark_transparent"
+
+[editor]
+auto-format = true
+bufferline = "multiple"
+color-modes = true
+completion-trigger-len = 1
+completion-timeout = 5
+default-yank-register = "+"
+line-number = "relative"
+popup-border = "all"
+true-color = true
+
+[editor.lsp]
+display-inlay-hints = true
+
+[editor.statusline]
+left = [
+  "mode",
+  "file-name",
+  "position",
+  "position-percentage",
+  "file-modification-indicator",
+  "spinner"
+]
+right = [
+  "version-control",
+  "diagnostics",
+  "selections",
+  "register",
+  "file-encoding",
+]
+mode.normal = "nor"
+mode.insert = "ins"
+mode.select = "sel"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.indent-guides]
+render = true
+
+[keys.insert.j]
+k = "normal_mode"

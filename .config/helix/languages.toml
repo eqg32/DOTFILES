@@ -1,0 +1,23 @@
+[[language]]
+name = "python"
+formatter = { command = "black", args = ["-l", "79", "-q", "-"] }
+auto-format = true
+
+[[language]]
+name = "c"
+formatter = { command = "clang-format", args = ["--style", "gnu"] }
+auto-format = true
+
+[[language]]
+name = "java"
+formatter = { command = "clang-format", args = ["--style", "gnu"] }
+auto-format = true
+
+[[language]]
+name = "sql"
+language-servers = ["sqruff"]
+formatter = { command = "sqruff", args = ["fix"] }
+
+[language-server.sqruff]
+command = "sqruff"
+args = ["lsp"]
