@@ -90,7 +90,8 @@ output * bg $wallpaper fill
 exec          brightnessctl s 20%
 exec_always   autotiling -sw 0.6 -l 2
 exec_always   dbus-run-session pulseaudio
-exec_always   dbus-run-session mako 
+exec_always   dbus-run-session mako
+exec_always   dbus-run-session udiskie 
 exec_always   mpd
 exec_always   battery-watcher 20
 
