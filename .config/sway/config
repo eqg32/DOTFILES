@@ -46,6 +46,7 @@ seat seat0 xcursor_theme Bibata-Modern-Ice
 # Borders
 default_border            pixel 2
 default_floating_border   pixel 2
+hide_edge_borders         smart
 
 # Client Colors
 client.focused           $color3   $color3   $color3   $color3   $color3
@@ -108,7 +109,7 @@ set $up      k
 set $right   l
 
 set $term    alacritty
-set $browser qutebrowser
+set $browser librewolf.appimage
 set $menu    bemenu-run \
     --fn "Iosevka Nerd Font Medium 13" \
     --fb "$background" \
