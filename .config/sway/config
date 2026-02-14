@@ -14,7 +14,7 @@ bar {
     position            bottom
     height              32
     workspace_min_width 32
-    separator_symbol  "|"
+    separator_symbol  " "
     font              Iosevka Nerd Font Medium 14
     
     # Status Command
@@ -39,21 +39,25 @@ bar {
 ###  WINDOW STYLE   ###
 #######################
 
+# Layout
+workspace_layout tabbed
+
 # Cursor
 seat seat0 xcursor_theme Bibata-Modern-Ice
 
-
 # Borders
+font                      Iosevka Nerd Font 12
 default_border            pixel 2
 default_floating_border   pixel 2
 hide_edge_borders         smart
+titlebar_padding          8 1 
 
 # Client Colors
-client.focused           $color3   $color3   $color3   $color3   $color3
-client.focused_inactive  $color1   $color1   $color1   $color1   $color1
-client.unfocused         $color1   $color1   $color1   $color1   $color1
-client.urgent            $color3   $color3   $color3   $color3   $color3
-client.placeholder       $color1   $color1   $color1   $color1   $color1
+client.focused           $color3   $color3   $foreground   $color3   $color3
+client.focused_inactive  $color1   $color1   $background   $color1   $color1
+client.unfocused         $color1   $color1   $background   $color1   $color1
+client.urgent            $color3   $color3   $background   $color3   $color3
+client.placeholder       $color1   $color1   $background   $color1   $color1
 
 # Gaps
 # gaps       outer 8
@@ -89,7 +93,7 @@ output * bg $wallpaper fill
 #######################
 
 exec          brightnessctl s 20%
-exec_always   autotiling -sw 0.6 -l 2
+# exec_always   autotiling -sw 0.6 -l 2
 exec_always   dbus-run-session pulseaudio
 exec_always   dbus-run-session mako
 exec_always   dbus-run-session udiskie 
@@ -109,7 +113,7 @@ set $up      k
 set $right   l
 
 set $term    alacritty
-set $browser librewolf.appimage
+set $browser zen.appimage
 set $menu    bemenu-run \
     --fn "Iosevka Nerd Font Medium 13" \
     --fb "$background" \
@@ -131,9 +135,9 @@ set $menu    bemenu-run \
 
 # Application Shortcuts
 bindsym {
-    $mod+Return		exec $term
+    $mod+Return		      exec $term
     $mod+Shift+Return   exec $term --command sh -c eru
-    $mod+r 		exec $menu
+    $mod+r 		          exec $menu
     $mod+b              exec $browser
     $mod+Shift+d      	kill
 }
@@ -183,6 +187,11 @@ bindsym {
     $mod+4            workspace number 4
     $mod+5            workspace number 5
     $mod+6            workspace number 6
+
+    $mod+q            workspace number 4
+    $mod+w            workspace number 5
+    $mod+e            workspace number 6
+
     $mod+7            workspace number 7
     $mod+8            workspace number 8
     $mod+9            workspace number 9
@@ -195,6 +204,11 @@ bindsym {
     $mod+Shift+4      move container to workspace number 4
     $mod+Shift+5      move container to workspace number 5
     $mod+Shift+6      move container to workspace number 6
+
+    $mod+Shift+q      move container to workspace number 4
+    $mod+Shift+w      move container to workspace number 5
+    $mod+Shift+e      move container to workspace number 6
+
     $mod+Shift+7      move container to workspace number 7
     $mod+Shift+8      move container to workspace number 8
     $mod+Shift+9      move container to workspace number 9
@@ -215,13 +229,13 @@ bindsym {
     XF86AudioMute          exec sound-control mute
     XF86AudioLowerVolume   exec sound-control decrease
     XF86AudioRaiseVolume   exec sound-control increase
-    XF86AudioPlay 	   exec mpc toggle
-    XF86AudioPause	   exec mpc toggle 
-    XF86AudioNext	   exec mpc next
-    XF86AudioPrev	   exec mpc prev
+    XF86AudioPlay 	       exec mpc toggle
+    XF86AudioPause	       exec mpc toggle 
+    XF86AudioNext	         exec mpc next
+    XF86AudioPrev	         exec mpc prev
     XF86MonBrightnessDown  exec brightnessctl s 5%-
     XF86MonBrightnessUp    exec brightnessctl s +5%
-    XF86WakeUp		   exec gtklock
+    XF86WakeUp		         exec gtklock
 }
 
 # Screenshots

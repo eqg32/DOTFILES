@@ -16,9 +16,6 @@ device = "intel_backlight"
 block = "temperature"
 
 [[block]]
-block = "cpu"
-
-[[block]]
 block = "net"
 
 [[block]]
