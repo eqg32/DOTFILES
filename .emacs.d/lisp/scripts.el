@@ -46,7 +46,9 @@
    '(fixed-pitch-serif ((t :font "Iosevka Nerd Font" :height 140)))
    '(org-level-1 ((t :height 1.4)))
    '(org-level-2 ((t :height 1.2)))
-   '(org-code ((t :font "Iosevka Nerd Font" :inherit 'default))))
+   '(org-code ((t :font "Iosevka Nerd Font" :inherit 'default)))
+   '(org-block-begin-line ((t :background "background")))
+   '(org-block-end-line ((t :background "background"))))
   ; (when
   ;     (not (display-graphic-p))
   ;   (custom-set-faces

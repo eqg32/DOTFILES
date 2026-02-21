@@ -15,6 +15,17 @@
 			  keymap)
   "Keymap for `emodal-mode'.")
 
+;; Making prefix keys for `emodal-mode-map'
+
+(define-prefix-command 'emodal-delete-map)
+(define-prefix-command 'emodal-change-map)
+(define-prefix-command 'emodal-yank-map)
+(define-prefix-command 'emodal-put-map)
+(define-key emodal-mode-map (kbd "d") 'emodal-delete-map)
+(define-key emodal-mode-map (kbd "c") 'emodal-change-map)
+(define-key emodal-mode-map (kbd "y") 'emodal-yank-map)
+(define-key emodal-mode-map (kbd "p") 'emodal-put-map)
+
 (defvar emodal-active-modes nil
   "Major modes in which `emodal-mode' is to be activated.")
 
@@ -77,7 +88,7 @@ movement keys. Else do nothing."
   (mapc
    (lambda (binding)
      "Bind BINDING to `emodal-mode'."
-     (define-key emodal-mode-map (car binding) (cdr binding)))
+     (define-key emodal-mode-map (kbd (car binding)) (cdr binding)))
    bindings))
 
 (emodal-setup '(("h" . backward-char)
@@ -97,12 +108,14 @@ movement keys. Else do nothing."
 		("]" . scroll-up-line)
 		("[" . scroll-down-line)
 
-		("d" . emodal-kill)
-		("c" . emodal-change)
-		("y" . kill-ring-save)
-		("Y" . emodal-save-line)
-		("p" . yank)
-		("P" . yank-from-kill-ring)
+		("d d" . emodal-kill)
+		("d l" . kill-whole-line)
+		("c c" . emodal-change)
+		("c l" . emodal-change-line)
+		("y y" . kill-ring-save)
+		("y l" . emodal-save-line)
+		("p p" . yank)
+		("p k" . yank-from-kill-ring)
 		("o" . emodal-open-above)
 		("O" . emodal-open-below)
 		("S" . surround-region)
@@ -110,7 +123,7 @@ movement keys. Else do nothing."
 		("u" . undo)
 		("r" . undo-redo)
 
-		("v" . set-mark-command)
+		("SPC" . set-mark-command)
 		("w" . emodal-mark-line)
 		("s" . exchange-point-and-mark)
 		("a" . keyboard-quit)

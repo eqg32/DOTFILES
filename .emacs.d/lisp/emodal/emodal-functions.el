@@ -32,6 +32,13 @@
     (call-interactively 'kill-word))
   (emodal-mode -1))
 
+(defun emodal-change-line ()
+  "Kill the region or word and start inserting text."
+  (interactive)
+  (kill-whole-line)
+  (emodal-open-below)
+  (emodal-mode -1))
+
 (defun emodal-kill ()
   "Kill the region or word."
   (interactive)
