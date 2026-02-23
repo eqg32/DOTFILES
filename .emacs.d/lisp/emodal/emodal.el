@@ -17,20 +17,21 @@
 
 ;; Making prefix keys for `emodal-mode-map'
 
-(define-prefix-command 'emodal-delete-map)
-(define-prefix-command 'emodal-change-map)
-(define-prefix-command 'emodal-yank-map)
-(define-prefix-command 'emodal-put-map)
-(define-key emodal-mode-map (kbd "d") 'emodal-delete-map)
-(define-key emodal-mode-map (kbd "c") 'emodal-change-map)
-(define-key emodal-mode-map (kbd "y") 'emodal-yank-map)
-(define-key emodal-mode-map (kbd "p") 'emodal-put-map)
+(define-prefix-command 'emodal-v-map)
+(define-prefix-command 'emodal-ve-map)
+(define-prefix-command 'emodal-p-map)
+(define-key emodal-mode-map (kbd "v") 'emodal-v-map)
+(define-key emodal-mode-map (kbd "v e") 'emodal-ve-map)
+(define-key emodal-mode-map (kbd "p") 'emodal-p-map)
 
 (defvar emodal-active-modes nil
   "Major modes in which `emodal-mode' is to be activated.")
 
 (defvar emodal-inactive-modes nil
   "Major modes in which `emodal-mode' is not to be activated.")
+
+(defvar emodal--temp-region nil
+  "If t, the region should be deactivated after any motion.")
 
 (define-minor-mode emodal-mode
   "Mode for modal editing in Emacs."
@@ -39,7 +40,7 @@
   :lighter "[EM]"
   :keymap emodal-mode-map
   (dolist
-      (binding '("C-x C-y" "C-;" "<escape>"))
+      (binding '("<escape>"))
     (keymap-local-set
      binding
      (lambda ()
@@ -55,7 +56,7 @@
       (deactivate-mark))))
 
 (defun emodal--keys-not-bound (keys)
-  "Return `t' if KEYS are not bound. Otherwise `nil'."
+  "Return t if KEYS are not bound.  Otherwise nil."
   (catch 'result
     (progn
       (dolist
@@ -67,8 +68,8 @@
 
 (defun emodal--activate-or-setup-moves ()
   "If `emodal-mode' is to be activated in current buffer's
-major mode, activate it. Else, if `hjkl' or `jk' keys are not bound, bind them as
-movement keys. Else do nothing."
+major mode, activate it.  Else, if `hjkl' or `jk' keys are not bound, bind them as
+movement keys.  Else do nothing."
   (cond
    ((minibufferp))
    ((cl-intersection
@@ -91,13 +92,13 @@ movement keys. Else do nothing."
      (define-key emodal-mode-map (kbd (car binding)) (cdr binding)))
    bindings))
 
-(emodal-setup '(("h" . backward-char)
-		("j" . next-line)
-		("k" . previous-line)
-		("l" . forward-char)
+(emodal-setup '(("h" . emodal-backward-char)
+		("j" . emodal-next-line)
+		("k" . emodal-previous-line)
+		("l" . emodal-forward-char)
 
-		("e" . forward-word)
-		("b" . backward-word)
+		("e" . emodal-forward-word)
+		("b" . emodal-backward-word)
 
 		("H" . beginning-of-line)
 		("J" . end-of-buffer)
@@ -108,12 +109,10 @@ movement keys. Else do nothing."
 		("]" . scroll-up-line)
 		("[" . scroll-down-line)
 
-		("d d" . emodal-kill)
-		("d l" . kill-whole-line)
-		("c c" . emodal-change)
-		("c l" . emodal-change-line)
-		("y y" . kill-ring-save)
-		("y l" . emodal-save-line)
+		("d" . emodal-kill)
+		("c" . emodal-change)
+		("y" . kill-ring-save)
+		("y" . emodal-save-line)
 		("p p" . yank)
 		("p k" . yank-from-kill-ring)
 		("o" . emodal-open-above)
@@ -126,10 +125,20 @@ movement keys. Else do nothing."
 		("SPC" . set-mark-command)
 		("w" . emodal-mark-line)
 		("s" . exchange-point-and-mark)
-		("a" . keyboard-quit)
+		("a" . emodal-keyboard-quit)
 
 		("i" . emodal-insert)
-		("t" . join-line)))
+		("t" . join-line)
+
+		("v b" . switch-to-buffer)
+		("v i" . ibuffer)
+		("v o" . other-window)
+		("v w" . delete-other-windows)
+		("v e a" . eglot-code-actions)
+		("v e r" . eglot-rename)
+		("v e R" . xref-find-references)
+		("v e d" . xref-find-definitions)
+		("v e D" . flymake-show-buffer-diagnostics)))
 
 (setq emodal-active-modes '(prog-mode text-mode conf-mode))
 (setq emodal-inactive-modes '(fundamental-mode comint-mode))
