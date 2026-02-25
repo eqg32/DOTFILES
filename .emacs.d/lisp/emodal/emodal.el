@@ -112,7 +112,7 @@ movement keys.  Else do nothing."
 		("d" . emodal-kill)
 		("c" . emodal-change)
 		("y" . kill-ring-save)
-		("y" . emodal-save-line)
+		("y" . kill-ring-save)
 		("p p" . yank)
 		("p k" . yank-from-kill-ring)
 		("o" . emodal-open-above)
@@ -122,7 +122,7 @@ movement keys.  Else do nothing."
 		("u" . undo)
 		("r" . undo-redo)
 
-		("SPC" . set-mark-command)
+		("SPC" . emodal-set-mark-command)
 		("w" . emodal-mark-line)
 		("s" . exchange-point-and-mark)
 		("a" . emodal-keyboard-quit)

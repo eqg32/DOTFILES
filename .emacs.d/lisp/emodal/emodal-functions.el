@@ -53,10 +53,18 @@
   (backward-word))
 
 (defun emodal-keyboard-quit ()
-  "Keyboard quit"
+  "Keyboard quit."
   (interactive)
   (setq emodal--temp-region nil)
   (keyboard-quit))
+
+(defun emodal-set-mark-command ()
+  "`set-mark-command' if region is inactive.
+Otherwise set `emodal--temp-region' to nil."
+  (interactive)
+  (if emodal--temp-region
+      (setq emodal--temp-region nil)
+    (call-interactively 'set-mark-command)))
 
 (defun emodal-insert ()
   "Insert text."
@@ -102,7 +110,7 @@
   (scroll-up-command (/ (window-body-height) 2)))
 
 (defun emodal-save-line ()
-  "Save whole line to the kill-ring."
+  "Save whole line to the `kill-ring'."
   (interactive)
   (kill-ring-save (line-beginning-position) (line-end-position)))
 
