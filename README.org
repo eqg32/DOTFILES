@@ -10,7 +10,7 @@ You can simply ~stow .~ in the directory. This will not, sadly, install the pack
 
 This package list covers all packages that are used in the configuration. Not including ~Iosevka Nerd Font~.
 
-- ~helix~
+- ~emacs~
 - ~nushell~
 - ~alacritty~
 - ~swayfx~
@@ -22,6 +22,6 @@ This package list covers all packages that are used in the configuration. Not in
 - ~wl-clipboard~
 - ~brightnessctl~
 - ~mpd~
-- ~mpc~
+- ~playerctl~
 - ~pulseaudio~
 - ~pulsemixer~
