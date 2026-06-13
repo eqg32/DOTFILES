@@ -60,7 +60,7 @@
 
 (add-elements-to-list
  default-frame-alist
- '(alpha-background . 90))
+ '(alpha-background . 95))
 
 (add-hooks
  'user/setup-faces
@@ -80,6 +80,15 @@
     (dired-do-kill-lines))
 
   (define-key dired-mode-map (kbd "C-c f") 'dired-filter))
+
+;; Tramp
+
+(with-eval-after-load 'tramp
+  (defun tramp-cleanup-all ()
+    "Cleanup all buffers and connections."
+    (interactive)
+    (tramp-cleanup-all-buffers)
+    (tramp-cleanup-all-connections)))
 
 (provide 'scripts)
 
