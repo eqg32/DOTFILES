@@ -41,7 +41,7 @@
   "Set faces."
   (custom-set-faces
    '(default ((t :font "Iosevka Nerd Font" :height 140)))
-   '(variable-pitch ((t :font "Iosevka Aile" :height 140)))
+   '(variable-pitch ((t :font "Iosevka Etoile" :height 140)))
    '(fixed-pitch ((t :font "Iosevka Nerd Font" :height 140)))
    '(fixed-pitch-serif ((t :font "Iosevka Nerd Font" :height 140)))
    '(org-level-1 ((t :height 1.4)))

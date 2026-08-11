@@ -30,6 +30,7 @@
 (add-elements-to-list
  package-archives
  '("gnu" . "https://elpa.gnu.org/packages/")
+ '("melpa-stable" . "https://stable.melpa.org/packages/")
  '("melpa" . "https://melpa.org/packages/"))
 
 (setopt package-enable-at-startup nil)
@@ -156,7 +157,8 @@
 
 (use-package org
   :custom
-  (org-agenda-files '("~/org/notes.org" "~/org/todo.org")))
+  (org-agenda-files '("~/org/notes.org" "~/org/tasks.org"))
+  (org-default-notes-file "~/org/tasks.org"))
 
 (use-package cus-edit
   :custom
