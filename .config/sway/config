@@ -101,6 +101,7 @@ exec_always   emacs --daemon
 exec_always   kdeconnectd
 exec_always   mako --ignore-timeout 0 --default-timeout 3000
 exec_always   mpd
+exec_always   wlsunset -S 7:00 -s 19:00
 
 
 #######################
@@ -138,10 +139,9 @@ set $menu    bemenu-run \
 # Application Shortcuts
 bindsym {
     $mod+q              exec $term
-    $mod+w		exec $browser
-    $mod+e		exec kdeconnect-app
     $mod+Return		exec emacsclient -c
     $mod+r 		exec $menu
+    $mod+Tab            exec gtklock
     $mod+Shift+d      	kill
 }
 
@@ -166,8 +166,6 @@ bindsym {
     
     $mod+Space        focus mode_toggle
     $mod+A            focus parent
-
-    $mod+Tab	      focus next
 }
 
 # Window Movement
@@ -224,13 +222,12 @@ bindsym {
     XF86AudioMute          exec sound-control mute
     XF86AudioLowerVolume   exec sound-control decrease
     XF86AudioRaiseVolume   exec sound-control increase
-    XF86AudioPlay          exec playerctl play-pause
-    XF86AudioPause         exec playerctl play-pause
-    XF86AudioNext	   exec playerctl next
-    XF86AudioPrev	   exec playerctl previous
+    XF86AudioPlay          exec playerctl play-pause -a
+    XF86AudioPause         exec playerctl play-pause -a
+    XF86AudioNext	   exec playerctl next -a
+    XF86AudioPrev	   exec playerctl previous -a
     XF86MonBrightnessDown  exec brightnessctl s 5%-
     XF86MonBrightnessUp    exec brightnessctl s +5%
-    XF86WakeUp		   exec gtklock
 }
 
 # Screenshots
@@ -258,7 +255,8 @@ input "type:keyboard" {
 
 input "type:touchpad" {
     tap             enabled
-    dwt             enabled
+    # disable while typing
+    dwt             disable
     natural_scroll  enabled
     accel_profile   "adaptive"
     pointer_accel   0.24
@@ -286,3 +284,20 @@ mode "resize" {
     }
 }
 bindsym $mod+Shift+r mode "resize"
+
+####################
+###  RUN MODE    ###
+####################
+
+mode "run" {
+    bindsym {
+	b    exec $browser
+	k    exec kdeconnect-app
+	p    exec prismlauncher
+	l    exec localsend
+
+	Return  mode "default"
+        Escape  mode "default"
+    }
+}
+bindsym $mod+Shift+a mode "run"
