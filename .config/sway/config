@@ -60,31 +60,13 @@ client.unfocused         $background   $background   $foreground   $background  
 client.urgent            $foreground   $foreground   $background   $foreground   $foreground
 client.placeholder       $background   $background   $foreground   $background   $background
 
-# Gaps
-# gaps       outer 8
-
 # SwayFX Features
-
-# Visual Effects
-# corner_radius    8
 
 # Blur Effects
 blur on
 blur_xray off
 blur_passes 4
 blur_radius 5
-
-# Shadow Effects
-# shadows on
-# shadows_on_csd on
-# shadow_blur_radius 16
-# shadow_color #0000007F
-
-# Dimming Effects
-default_dim_inactive 0.1
-for_window [floating] dim_inactive 0.0
-dim_inactive_colors.unfocused #000000FF
-dim_inactive_colors.urgent #900000FF
 
 # Background
 output * bg $wallpaper fill
