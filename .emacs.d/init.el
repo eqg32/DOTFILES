@@ -30,8 +30,7 @@
 (add-elements-to-list
  package-archives
  '("gnu" . "https://elpa.gnu.org/packages/")
- '("melpa-stable" . "https://stable.melpa.org/packages/")
- '("melpa" . "https://melpa.org/packages/"))
+ '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (setopt package-enable-at-startup nil)
 
@@ -112,10 +111,6 @@
 
 (use-package eglot
   :hook ((go-mode python-ts-mode c-mode c++-mode) . eglot-ensure))
-  ;; :config
-  ;; (add-to-list
-  ;;  'eglot-server-programs
-  ;;  '((python-mode python-ts-mode) "ty" "server")))
 
 (use-package simple
   :hook ((prog-mode . column-number-mode)
@@ -123,22 +118,6 @@
   :custom
   (kill-whole-line t)
   (completion-show-help nil))
-
-;; (use-package icomplete
-;;   :bind (:map icomplete-minibuffer-map
-;;               ("C-n" . icomplete-forward-completions)
-;;               ("C-p" . icomplete-backward-completions)
-;;               ("RET" . icomplete-force-complete-and-exit))
-;;   :hook
-;;   (after-init . (lambda ()
-;;                   (icomplete-mode 1)
-;; 		  (icomplete-vertical-mode 1)))
-;;   :custom
-;;   (icomplete-in-buffer t)
-;;   (icomplete-prospects-height 5)
-;;   (icomplete-scroll t)
-;;   :config
-;;   (advice-add 'completion-at-point :after #'minibuffer-hide-completions))
 
 (use-package icomplete
   :config (icomplete-vertical-mode 1))
