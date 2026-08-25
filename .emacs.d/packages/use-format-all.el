@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package format-all
   :ensure t
   :hook ((python-ts-mode c-mode c++-mode) . format-all-mode)

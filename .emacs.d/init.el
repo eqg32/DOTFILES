@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t; -*-
+
 ;; Macros:
 
 (defmacro add-hooks (function &rest hooks)

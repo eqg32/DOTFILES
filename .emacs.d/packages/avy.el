@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package evil-avy
   :ensure t
   :after evil

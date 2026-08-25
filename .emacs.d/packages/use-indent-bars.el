@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package indent-bars
   :ensure t
   :hook ((go-mode . indent-bars-mode)

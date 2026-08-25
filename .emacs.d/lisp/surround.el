@@ -1,4 +1,4 @@
-;;; surround.el --- Surround a region with.
+;;; surround.el --- Surround a region with -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 

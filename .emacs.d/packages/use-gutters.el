@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (use-package git-gutter
   :ensure t
   :hook (prog-mode . git-gutter-mode)
