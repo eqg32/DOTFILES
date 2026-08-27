@@ -15,14 +15,27 @@
     ("{" . "}"))
   "The alist of pairs.")
 
+(defvar surround--last-pair
+  nil
+  "The last used pair.")
+
 (defun surround-region (pair)
+  "Surround the region, if active.
+PAIR is a character used for surrounding. Interactive function."
+
+  (interactive "sSurround pair: ")
+  (if (string-empty-p pair)
+      (surround--region surround--last-pair)
+    (surround--region pair)
+    (setq surround--last-pair pair)))
+
+(defun surround--region (pair)
   "Surround the region, if active.
 PAIR is a character used for surrounding."
 
-  (interactive "sSurround pair: ")
   (when (region-active-p)
     (let ((beginning (region-beginning))
-	  (end (+ 1 (region-end)))
+	  (end (+ (length pair) (region-end)))
 	  (op-pair (if (assoc-string pair surround--pairs)
 		       (car (assoc-string pair surround--pairs))
 		     nil))
