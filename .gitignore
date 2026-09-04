@@ -39,6 +39,7 @@
 .emacs.d/ssh-known-hosts   # SSH hosts cache
 .emacs.d/transient/        # Transient command data
 .emacs.d/.python-environments/ # Python environments
+.emacs.d/user-lisp/.user-lisp-autoloads.el
 
 # ----------------------------
 # Package manager directories
