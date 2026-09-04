@@ -6,6 +6,20 @@
 
 ;;; Code:
 
+;; Macros:
+
+(defmacro add-hooks (function &rest hooks)
+  "Add FUNCTION to each of the HOOKS."
+  `(dolist
+       (hook (list ,@hooks))
+     (add-hook hook ,function)))
+
+(defmacro add-elements-to-list (list-var &rest elements)
+  "Add ELEMENTS to LIST-VAR."
+  `(dolist
+       (element (list ,@elements))
+     (add-to-list ',list-var element)))
+
 ;; C
 
 (add-hooks
